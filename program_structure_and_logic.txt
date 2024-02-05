@@ -1,0 +1,43 @@
+
+Program Overview:
+-----------------
+This program implements a journal submission system with encryption. It features a GUI for text submission, 
+encrypts the submitted text using a modified Caesar cipher with a random shift, and stores both the original 
+and encrypted texts in separate Excel databases. Additionally, it includes a decryption feature that attempts 
+to decrypt the encrypted texts by identifying the most likely shift used, based on the presence of common English words.
+
+Program Components:
+-------------------
+1. GUI for Text Submission:
+   - Utilizes Tkinter to create a simple interface.
+   - Includes a text field for input and a submission button.
+
+2. Encryption:
+   - Applies a modified Caesar cipher to the input text, using a random shift for each submission.
+   - The shift value is determined at the time of submission and ranges from 1 to 25.
+
+3. Excel Database Management:
+   - Maintains two Excel databases: one for plain (original) texts and another for encrypted texts.
+   - Checks if the databases exist; if not, creates them.
+   - Adds new entries to the databases with the current date and time, the submitted/encrypted text, and the shift value used for encryption.
+
+4. Decryption (Post-Encryption Analysis):
+   - Attempts to decrypt the encrypted texts by applying all possible shifts.
+   - Uses a list of common English words to identify the most likely correct decryption.
+   - Saves the decrypted messages along with the identified shift to a new Excel file.
+
+5. Text Field Clearing:
+   - Clears the text field in the GUI after submission, readying it for new input.
+
+Logic Flow:
+-----------
+1. The user inputs text into the GUI's text field and clicks the submission button.
+2. The program randomly selects a shift value and encrypts the text using the Caesar cipher.
+3. The original and encrypted texts, along with metadata (date/time, shift value), are saved to their respective Excel databases.
+4. Optionally, the program can later attempt to decrypt the encrypted texts stored in the database, using a heuristic based on common English words to find the correct shift.
+5. After submission, the text field is cleared for new input.
+
+Important Notes:
+----------------
+- The effectiveness of the decryption process depends on the encrypted text's length and content, as well as the comprehensiveness of the list of common English words used.
+- The program requires pandas for Excel file management and Tkinter for the GUI component.
